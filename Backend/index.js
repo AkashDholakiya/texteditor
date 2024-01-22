@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Import Routes
 app.use("/api/v1/auth", user);
-app.use("/uploads", express.static("uploads"));
+// app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {
     res.send("Hello World");

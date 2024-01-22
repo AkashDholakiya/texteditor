@@ -1,24 +1,42 @@
-import './App.css';
-import {BrowserRouter as Router, Routes,Route} from 'react-router-dom';
-import Navbar from './Component/Navbar';
-import Home from './routes/Home';
-import About from './routes/About';
-import Contact from './routes/Contact';
+import React from 'react'
+import {BrowserRouter, Routes,Route} from 'react-router-dom'
+import Home from './Routes/Home'
+import Navbaar from './Component/Navbaar'
+import Footer from './Component/Footer'
+import About from './Routes/About'
+import ResetPassword from './Routes/ResetPassword' 
+import VerifyEmail from './Routes/VerifyEmail'
+import Signup from './Routes/Signup'
+import Login from './Routes/Login'
+import ForgotPass from './Routes/ForgotPass'
+// import Dashboard from './Component/Dashboard'
+import Errorpage from './Routes/Errorpage' 
+// import Profile from './Routes/Profile'
+import './App.css'
 
-function App() {
+const App = () => { 
   return (
-    <div className="App"> 
-      <Router> 
-        <Navbar />
-        <Routes>  
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-        </Routes>
-      </Router>
-      <h1>So this is all about this</h1>
-    </div>
-  );
+    <>
+      <BrowserRouter> 
+        <div id='main-content'> 
+          <Navbaar/> 
+          <Routes>   
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
+            <Route path="/verify/:id/:token" element={<VerifyEmail />} />
+            <Route path="/errorpage" element={<Errorpage />} />
+            <Route path='/signup' element={<Signup />} /> 
+            <Route path='/login' element={<Login />} />
+            <Route path='/forget-password' element={<ForgotPass />} />
+            {/* <Route path="/dashboard" element={<Dashboard  />} /> */}
+            {/* <Route path="/profile" element={<Profile />} /> */}
+          </Routes>
+        </div>
+          <Footer/>
+      </BrowserRouter> 
+    </>
+  )
 }
 
-export default App;
+export default App

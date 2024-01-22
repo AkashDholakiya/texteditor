@@ -1,0 +1,38 @@
+:root {
+    --len: 242.776657104492px;
+    --time: 1.3s;
+    --dasharray-1: calc(var(--len) * 0.01);
+    --dasharray-2: calc(var(--len) * 0.14);
+    --dasharray-3: calc(var(--len) * -0.99);
+    --dashoffset-1: calc(var(--len) * -0.11);
+    --dashoffset-2: calc(var(--len) * 0.35);
+    --dashoffset-3: calc(var(--len) * -0.35);
+    /* Define other needed variables here */
+}
+
+.spinner{
+    display: flex;
+    justify-content: center;
+    font-size: 62.5%;
+    height: 100%;
+    overflow: hidden;
+}
+#outline {
+  stroke-dasharray: var(--dasharray-1), var(--len);
+  stroke-dashoffset: 0;
+  animation: anim var(--time) linear infinite;
+}
+@keyframes anim {
+  12.5% {
+    stroke-dasharray: var(--dasharray-2), var(--len);
+    stroke-dashoffset: var(--dashoffset-1);
+  }
+  43.75% {
+    stroke-dasharray: var(--dashoffset-2), var(--len);
+    stroke-dashoffset: var(--dashoffset-3);
+  }
+  100% {
+    stroke-dasharray: var(--dasharray-1), var(--len);
+    stroke-dashoffset: var(--dasharray-3);
+  }
+}

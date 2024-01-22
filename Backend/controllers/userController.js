@@ -97,11 +97,6 @@ const login = async (req, res) => {
         } 
 
         const token = jwt.sign({ user, id: user._id , profileimg:user.profileimg}, process.env.JWT_SECRET || JWT_SECRET, { expiresIn: "15d" });
-
-        // res.cookie("accessToken", token, {
-        //     httpOnly: true,
-        //     expires: token.expiresIn
-        // }).status(200).json({ success: true, token, message: "User has been logged in successfully", data: { id: user._id, username: user.username, email: user.email } });
         
         res.status(200).json({ success: true, token, message: "User has been logged in successfully", data: { id: user._id,profileimg:user.profileimg, username: user.username, email: user.email } });
 
@@ -129,22 +124,22 @@ const EditUser = async (req, res) => {
     }
 }
 
-const editprofileimage = async (req, res) => { 
-    // console.log(req.file);
-    try {
-        const fileName = req.file.filename;  
-        const user = await User.findByIdAndUpdate(req.user._id, {
-            profileimg: fileName
-        }, { new: true }); 
-        if (!user) {    
-            return res.status(404).json({ success: false, message: "User not found" });
-        }
-        res.status(200).json({ success: true, message: "User has been updated successfully", data: user });
-    }
-    catch (error) {
-        res.status(500).json({ success: false, message: "Failed To update", error: error.message });
-    } 
-}
+// const editprofileimage = async (req, res) => { 
+//     // console.log(req.file);
+//     try {
+//         const fileName = req.file.filename;  
+//         const user = await User.findByIdAndUpdate(req.user._id, {
+//             profileimg: fileName
+//         }, { new: true }); 
+//         if (!user) {    
+//             return res.status(404).json({ success: false, message: "User not found" });
+//         }
+//         res.status(200).json({ success: true, message: "User has been updated successfully", data: user });
+//     }
+//     catch (error) {
+//         res.status(500).json({ success: false, message: "Failed To update", error: error.message });
+//     } 
+// }
 
 
 const DeleteUser = async (req, res) => {
@@ -280,4 +275,4 @@ const VerifyEmail = async (req,res) => {
     }
 }
 
-export { register, login, getuser, EditUser,editprofileimage, DeleteUser, ForgotPass, validateUser, ResetPassword, VerifyEmail };
+export { register, login, getuser, EditUser, DeleteUser, ForgotPass, validateUser, ResetPassword, VerifyEmail };
