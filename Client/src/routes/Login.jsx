@@ -33,7 +33,7 @@ const Login = (props) => {
                 // localStorage.setItem('profileimg', json.data.profileimg);
                 
                 alert("Login Successful"); 
-                Navigate("/Dashboard");
+                Navigate("/");
                 window.location.reload();
             } else {
                 alert("Invalid Credentials");

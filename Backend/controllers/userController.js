@@ -96,7 +96,7 @@ const login = async (req, res) => {
             return res.status(401).json({ success: false, message: "Please Login with correct credential" });
         } 
 
-        const token = jwt.sign({ user, id: user._id , profileimg:user.profileimg}, process.env.JWT_SECRET || JWT_SECRET, { expiresIn: "15d" });
+        const token = jwt.sign({ user, id: user._id}, process.env.JWT_SECRET || JWT_SECRET, { expiresIn: "15d" });
         
         res.status(200).json({ success: true, token, message: "User has been logged in successfully", data: { id: user._id,profileimg:user.profileimg, username: user.username, email: user.email } });
 
@@ -275,4 +275,23 @@ const VerifyEmail = async (req,res) => {
     }
 }
 
-export { register, login, getuser, EditUser, DeleteUser, ForgotPass, validateUser, ResetPassword, VerifyEmail };
+const alluser = async (req,res) => {
+    try {
+        const key = req.query.search ? {
+            $or: [
+                { username: { $regex: req.query.search, $options: 'i' } },
+                { email: { $regex: req.query.search, $options: 'i' } },
+            ],
+        }
+        : {};
+        const user = await User.find({...key}).find({_id:{$ne:req.user.id}});
+        if(!user){
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+        return res.status(200).json({ success: true, message: "User has been fetched successfully",data:user});
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Failed To fetch", error: error.message });
+    }
+}
+
+export { register, login, getuser, EditUser, DeleteUser, ForgotPass, validateUser, ResetPassword, VerifyEmail, alluser };
