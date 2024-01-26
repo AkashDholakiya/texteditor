@@ -144,7 +144,7 @@ const EditUser = async (req, res) => {
 
 const DeleteUser = async (req, res) => {
     try {
-        const user = await User.findByIdAndDelete(req.params.id);
+        const user = await User.findByIdAndDelete(req.user._id);
         if (!user) {
             return res.status(404).json({ success: false, message: "User not found" });
         }
@@ -284,7 +284,7 @@ const alluser = async (req,res) => {
             ],
         }
         : {};
-        const user = await User.find({...key}).find({_id:{$ne:req.user.id}});
+        const user = await User.find({...key}).find({_id:{$ne:req.user._id}});
         if(!user){
             return res.status(404).json({ success: false, message: "User not found" });
         }

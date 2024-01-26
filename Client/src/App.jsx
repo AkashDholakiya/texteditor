@@ -9,12 +9,13 @@ import VerifyEmail from './Routes/VerifyEmail'
 import Signup from './Routes/Signup'
 import Login from './Routes/Login'
 import ForgotPass from './Routes/ForgotPass'
-// import Dashboard from './Component/Dashboard'
 import Errorpage from './Routes/Errorpage' 
-// import Profile from './Routes/Profile'
+import TextEditor from './Component/TextEditor'
+import EditText from './Component/EditText'
 import './App.css'
 
 const App = () => { 
+  // const [textId, settextId] = useState('')
   return (
     <>
       <BrowserRouter> 
@@ -29,6 +30,8 @@ const App = () => {
             <Route path='/signup' element={<Signup />} /> 
             <Route path='/login' element={<Login />} />
             <Route path='/forget-password' element={<ForgotPass />} />
+            <Route path='/texteditor' element={<TextEditor />}/>
+            <Route path={`/edittext/:id`} element={<EditText/>}/>
             {/* <Route path="/dashboard" element={<Dashboard  />} /> */}
             {/* <Route path="/profile" element={<Profile />} /> */}
           </Routes>

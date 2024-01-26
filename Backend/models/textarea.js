@@ -1,21 +1,28 @@
 import mongoose from "mongoose";
 
 const textareaSchema = new mongoose.Schema({
-    userId : [{
+    userId : {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
+        ref: "User",
+    },
+    EditAccessToUser : [{
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     }],
     title: {
         type: String,
-        required: true,
-        unique: true,
+        required: true, 
     },
     content:{
         type: String,
         required: true,
     },
     createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    updatedAt:{
         type: Date,
         default: Date.now,
     },
