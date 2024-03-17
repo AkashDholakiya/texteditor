@@ -10,9 +10,18 @@ import { Server } from 'socket.io';
 
 const port = 4000 || process.env.PORT;
 const app = express();
+
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}
  
 dotenv.config(); 
-app.use(cors());
+
+app.options('', cors(corsOptions));
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -21,7 +30,6 @@ app.use("/api/v1/auth", user);
 app.use("/api/v1/textarea", text);
 
 
-app.options('*', cors());
 
 app.get('/', (req, res) => {
     res.send('Welcome to TextEditor API');
