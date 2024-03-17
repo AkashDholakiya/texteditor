@@ -5,7 +5,7 @@ const VerifyEmail = () => {
     const Navigate = useNavigate();
     const { id, token } = useParams();
     const userVerify = async () => {
-        const response = await fetch(`http://localhost:4000/api/v1/auth/verify/${id}/${token}`, {
+        const response = await fetch(`https://texteditor-backend-sigma.vercel.app/api/v1/auth/verify/${id}/${token}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ const VerifyEmail = () => {
     },[])
     const handle = async (e) => {
         e.preventDefault();
-        const response = await fetch(`http://localhost:4000/api/v1/auth/verify/${id}/${token}`, {
+        const response = await fetch(`https://texteditor-backend-sigma.vercel.app/api/v1/auth/verify/${id}/${token}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ const Home = (props) => {
   const [loading, setloading] = useState(false)
 
   const fetchDocs = async () => {
-    const res = await fetch("http://localhost:4000/api/v1/textarea/get-text", {
+    const res = await fetch("https://texteditor-backend-sigma.vercel.app/api/v1/textarea/get-text", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const Home = (props) => {
   }
 
   const fetchSharedDocs = async () => {
-    const res = await fetch("http://localhost:4000/api/v1/textarea/get-shared-text", {
+    const res = await fetch("https://texteditor-backend-sigma.vercel.app/api/v1/textarea/get-shared-text", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ const Home = (props) => {
   }
 
   const HandleDelete = async (id) => {
-    const res = await fetch(`http://localhost:4000/api/v1/textarea/delete-text`, {
+    const res = await fetch(`https://texteditor-backend-sigma.vercel.app/api/v1/textarea/delete-text`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
