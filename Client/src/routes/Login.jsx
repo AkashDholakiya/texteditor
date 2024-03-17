@@ -27,17 +27,12 @@ const Login = (props) => {
             const json = await response.json();
             if (json.success) {
                 localStorage.setItem('token', json.token);
-                // localStorage.setItem('userid', json.data.id);
                 localStorage.setItem('username', json.data.username);
-                // localStorage.setItem('email', json.data.email);
-                // localStorage.setItem('profileimg', json.data.profileimg);
-                
                 alert("Login Successful"); 
                 Navigate("/");
                 window.location.reload();
             } else {
-                alert("Invalid Credentials");
-                // props.showAlert("Invalid Credentials", "danger");
+                alert(json.message);
             }
         }else{
             e.preventDefault();

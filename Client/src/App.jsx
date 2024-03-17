@@ -32,6 +32,7 @@ const App = () => {
             <Route path='/forget-password' element={<ForgotPass />} />
             <Route path='/texteditor' element={<TextEditor />}/>
             <Route path={`/edittext/:id`} element={<EditText/>}/>
+            <Route path='*' element={<Errorpage/>} />
             {/* <Route path="/dashboard" element={<Dashboard  />} /> */}
             {/* <Route path="/profile" element={<Profile />} /> */}
           </Routes>

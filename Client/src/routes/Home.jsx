@@ -93,7 +93,7 @@ const Home = (props) => {
       <div className='my-5'>
        <Card style={{ width: '18rem' }}>
       {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-      <Card.Body>
+      <Card.Body >
         <Card.Title>Create New Doc</Card.Title>
         <Card.Text>
             Create a new document and start writing...
@@ -114,8 +114,9 @@ const Home = (props) => {
           return (
               <Card className='mx-3 my-3' style={{ width: '18rem' }} key={doc._id}>
               {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-              <Card.Body>
-                <Card.Title>{doc.title}</Card.Title>
+              <Card.Body >
+                <Card.Title>{doc.title.length > 23 ? doc.title.slice(0,20) + '...' :  doc.title}</Card.Title>
+                <hr />
                 <Card.Text style={{height:"50px"}}>
                     {doc.content.length > 60 ? 'Check in Edit...' : <ShowMyHtml val={doc.content}/>}
                 </Card.Text>
@@ -135,7 +136,8 @@ const Home = (props) => {
                 <Card className='mx-3 my-3' style={{ width: '18rem' }} key={doc._id}>
                 {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
                 <Card.Body>
-                  <Card.Title>{doc.title}</Card.Title>
+                  <Card.Title>{doc.title.length > 23 ? doc.title.slice(0,20) + '...' :  doc.title}</Card.Title>
+                  <hr />
                   <Card.Text style={{height:"50px"}}>
                       {doc.content.length > 60 ? 'Check in Edit...' : <ShowMyHtml val={doc.content}/>}
                   </Card.Text>

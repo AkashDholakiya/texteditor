@@ -16,18 +16,12 @@ function Navbaar() {
   }
   const location = useLocation()
   const path = location.pathname
+
   if (localStorage.getItem('username') && (path === '/signup' || path === '/login' || path === '/forget-password' || path === '/reset-password/:id/:token' || path === '/verify/:id/:token')) {
-    navigate('/')
+    alert('You are already logged in')
+    window.location.href = '/'
   }
 
-
-  // useEffect(() => {
-  //   if (localStorage.getItem('token')) {
-  //     const token = localStorage.getItem('token')
-  //     const decoded = Jwt.decode(token)
-  //     console.log(decoded);
-  //   }
-  // }, [])
   if(location.pathname === '/texteditor'){
     document.title = 'TextEditor - Create New Doc'
   }else if(location.pathname === '/'){

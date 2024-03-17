@@ -91,6 +91,9 @@ const login = async (req, res) => {
             return res.status(404).json({ success: false, message: "Please Login with correct credential" });
         }
 
+        if(!user.verifyEmail){
+            return res.status(401).json({ success: false, message: "Please verify your email" });
+        }
         const checkPass = await bcrypt.compare(password, user.password);
         if (!checkPass) {
             return res.status(401).json({ success: false, message: "Please Login with correct credential" });

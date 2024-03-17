@@ -30,17 +30,16 @@ const io = new Server(server, {
 });
 
 io.on('connection', (socket) => {
-    // console.log('Socket connected');
 
     socket.on('updateData', async (data) => {
+
+        socket.broadcast.emit('updateData', data);
         const { title, content,id } = data;
         try {
-            const text = await textarea.findByIdAndUpdate(id, {title:title, content:content} ,{new:true});   
-            console.log(text);
-        } catch (error) {
+            const text = await textarea.findByIdAndUpdate(id, {title:title, content:content, updatedAt: new Date().toISOString() } ,{new:true});   
+        } catch (error) { 
             console.log(error);
         }
-        socket.broadcast.emit('updatedData', { title: title, content: content});
     });
 
 });

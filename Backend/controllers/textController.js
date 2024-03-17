@@ -27,7 +27,7 @@ const getTextArea  = async (req, res) => {
 
 const getTextAreaInd  = async (req, res) => {
     try {
-        const text = await textarea.findById(req.params.id);
+        const text = await textarea.findById(req.params.id).populate('EditAccessToUser');
         if(text.userId.toString() !== req.user._id.toString()){
             const canShare = false;
             res.status(200).json({success:true, canShare, text});
@@ -111,6 +111,18 @@ const deleteUserText = async (req, res) => {
         res.status(404).json({success:false, message:error.message});
     }
 }
+
+const RemoveAccess = async (req, res) => {
+    const id = req.body.id;
+    const removeuser = req.body.removeuser;
+    try {
+        const text = await textarea.findByIdAndUpdate(id, {$pull : {EditAccessToUser : removeuser}},{new:true});
+        res.status(200).json({success:true, text});
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({success:false, message:error.message});
+    }
+}
  
 
-export {addTextArea, getTextArea, getTextAreaInd, EditedTextArea,ShareWithUser, GetSharedTextArea, deleteTextArea , deleteSharedText, deleteUserText};
+export {addTextArea, getTextArea, getTextAreaInd, EditedTextArea,ShareWithUser, GetSharedTextArea, deleteTextArea , deleteSharedText, deleteUserText, RemoveAccess };
