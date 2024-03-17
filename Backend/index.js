@@ -20,6 +20,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/v1/auth", user);
 app.use("/api/v1/textarea", text);
 
+app.get('/', (req, res) => {
+    res.send('Welcome to TextEditor API');
+});
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
