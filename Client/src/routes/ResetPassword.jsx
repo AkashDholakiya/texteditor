@@ -10,7 +10,7 @@ const ResetPassword = () => {
     const [cred, setcred] = useState({ password: ''});
     const [eyeshow, seteyeshow] = useState(false);
     const validateUser = async () => {
-        const res = await fetch(`https://texteditor-backend-sigma.vercel.app/api/v1/auth/reset-password/${id}/${token}`, {
+        const res = await fetch(`https://texteditor-three.vercel.app/api/v1/auth/reset-password/${id}/${token}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const ResetPassword = () => {
         }
         if(validation){
             e.preventDefault();
-            const response = await fetch(`https://texteditor-backend-sigma.vercel.app/api/v1/auth/reset-password/${id}/${token}`, {
+            const response = await fetch(`https://texteditor-three.vercel.app/api/v1/auth/reset-password/${id}/${token}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

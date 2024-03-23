@@ -12,14 +12,14 @@ const port = 4000 || process.env.PORT;
 const app = express();
 
 const corsOptions = {
-    origin: '*',
+    origin: ['https://texteditor-frontend.vercel.app'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }
  
 dotenv.config(); 
 
-app.options('', cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 
 app.use(express.json());
@@ -28,7 +28,6 @@ app.use(express.urlencoded({ extended: false }));
 // Import Routes
 app.use("/api/v1/auth", user);
 app.use("/api/v1/textarea", text);
-
 
 
 app.get('/', (req, res) => {
@@ -41,7 +40,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
     pingTimeout: 60000, 
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://texteditor-frontend.vercel.app',
     }
 });
 
