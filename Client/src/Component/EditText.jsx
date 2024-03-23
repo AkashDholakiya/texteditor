@@ -47,7 +47,7 @@ const EditText = () => {
         setloading(false)
 
         document.querySelector('.jodit-placeholder').innerHTML = ''
-        socket.current = io('http://localhost:4000')
+        socket.current = io('https://texteditor-three.vercel.app')
 
         return () => {
             socket.current.disconnect()
