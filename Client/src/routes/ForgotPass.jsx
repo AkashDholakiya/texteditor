@@ -12,7 +12,7 @@ const ForgotPass = (props) => {
         }
         if(validation){
             e.preventDefault();
-            const response = await fetch(`https://texteditor-three.vercel.app/api/v1/auth/forgot-password`, {
+            const response = await fetch(`https://texteditor-yab4.onrender.com/api/v1/auth/forgot-password`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

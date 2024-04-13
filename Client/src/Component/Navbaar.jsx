@@ -50,7 +50,7 @@ function Navbaar() {
  
   const HandleDeleteAccount = async () => {
     if(window.confirm('Are you sure you want to delete your account?')){
-      const res1 = await fetch(`https://texteditor-three.vercel.app/api/v1/textarea/delete-user-text/`, {
+      const res1 = await fetch(`https://texteditor-yab4.onrender.com/api/v1/textarea/delete-user-text/`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ function Navbaar() {
         }
       })
       console.log(res1);
-      const res2 = await fetch(`https://texteditor-three.vercel.app/api/v1/textarea/delete-shared-text/`, {
+      const res2 = await fetch(`https://texteditor-yab4.onrender.com/api/v1/textarea/delete-shared-text/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ function Navbaar() {
         } 
       })
       console.log(res2);
-      const res = await fetch(`https://texteditor-three.vercel.app/api/v1/auth/deleteuser`, {
+      const res = await fetch(`https://texteditor-yab4.onrender.com/api/v1/auth/deleteuser`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

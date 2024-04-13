@@ -25,7 +25,7 @@ const EditText = () => {
     const editor = useRef(null)
     const {id} = useParams()
     const fetchDocs = async () => {
-        const res = await fetch(`https://texteditor-three.vercel.app/api/v1/textarea/edittext/${id}`, {
+        const res = await fetch(`https://texteditor-yab4.onrender.com/api/v1/textarea/edittext/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const EditText = () => {
         setloading(false)
 
         document.querySelector('.jodit-placeholder').innerHTML = ''
-        socket.current = io('https://texteditor-three.vercel.app')
+        socket.current = io('https://texteditor-yab4.onrender.com')
 
         return () => {
             socket.current.disconnect()
@@ -90,7 +90,7 @@ const EditText = () => {
             alert('Please enter content')
             return
         }
-        const res = await fetch(`https://texteditor-three.vercel.app/api/v1/textarea/edittext/${id}`, {
+        const res = await fetch(`https://texteditor-yab4.onrender.com/api/v1/textarea/edittext/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ const EditText = () => {
     const HandleUserNameChange = async (e) => {
         e.preventDefault()
         setUsername(e.target.value)
-        const res = await fetch(`https://texteditor-three.vercel.app/api/v1/auth/search-user/?search=${username}`, {
+        const res = await fetch(`https://texteditor-yab4.onrender.com/api/v1/auth/search-user/?search=${username}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ const EditText = () => {
   
       const HandleSharingForm = async (e) => {
         e.preventDefault()
-        const res = await fetch(`https://texteditor-three.vercel.app/api/v1/textarea/share-text/${id}`, {
+        const res = await fetch(`https://texteditor-yab4.onrender.com/api/v1/textarea/share-text/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ const EditText = () => {
       const RemoveAccess = (user) => {
         return async (e) => {
           e.preventDefault()
-          const res = await fetch(`https://texteditor-three.vercel.app/api/v1/textarea/remove-access`, {
+          const res = await fetch(`https://texteditor-yab4.onrender.com/api/v1/textarea/remove-access`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ const TextEditor = () => {
         alert('Please enter content')
         return
       }
-      const res = await fetch("https://texteditor-three.vercel.app/api/v1/textarea/add-text", {
+      const res = await fetch("https://texteditor-yab4.onrender.com/api/v1/textarea/add-text", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

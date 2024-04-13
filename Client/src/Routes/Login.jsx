@@ -17,7 +17,7 @@ const Login = (props) => {
         
         if(validation){
             e.preventDefault();
-            const response = await fetch(`https://texteditor-three.vercel.app/api/v1/auth/login`, {
+            const response = await fetch(`https://texteditor-yab4.onrender.com/api/v1/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
