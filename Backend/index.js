@@ -10,9 +10,15 @@ import { Server } from 'socket.io';
 
 const port = 4000 || process.env.PORT;
 const app = express();
- 
+const options = {
+    cors: {
+        origin: "https://texteditor-frontend.vercel.app",
+        methods: ["GET", "POST","PUT","DELETE","PATCH"]
+    }
+}; 
+
 dotenv.config(); 
-app.use(cors());
+app.use(cors(options));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -31,7 +37,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
     pingTimeout: 60000, 
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://texteditor-frontend.vercel.app',
     }
 });
 

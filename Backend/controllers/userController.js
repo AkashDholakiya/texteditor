@@ -56,7 +56,7 @@ const register = async (req, res) => {
                 html: `
                 <h2>Account Verification</h2>
                 <p>Click on the link to verify your account</p>
-                <a href="http://localhost:3000/verify/${newUser._id}/${token}">Click Here to verify your account</a>
+                <a href="https://texteditor-frontend.vercel.app/verify/${newUser._id}/${token}">Click Here to verify your account</a>
                 <h3>&#169; all right reserved</h3>`
             };        
 
@@ -197,7 +197,7 @@ const ForgotPass = async (req, res) => {
                 html: `
                 <h4>Reset Password</h4>
                 <p>This Link is valid for 5 minutes</p>
-                <a href="http://localhost:3000/reset-password/${user._id}/${setusertoken.verifytoken}">Click Here to reset your password</a>
+                <a href="https://texteditor-frontend.vercel.app/reset-password/${user._id}/${setusertoken.verifytoken}">Click Here to reset your password</a>
                 <p>&#169; all right reserved</p>`
             };
             transporter.sendMail(mailOptions, (error, info) => {
